@@ -1,5 +1,7 @@
 module Chess where
 
+import Data.List (intercalate)
+
 data Player = Black | White
             deriving (Show)
 
@@ -28,24 +30,22 @@ instance Show Square where
   show (Square Black Knight) = "♞"
   show (Square Black Pawn)   = "♟"
   show Empty = "·"
-  
-                       
+                         
 newtype Board = Board [[Square]]
 
 instance Show Board where
-  show (Board rows) = concat $ map ((++ "\n") . showRow) rows
+  show (Board rows)   = intercalate "\n" $ map showRow rows
     where
-      showRow squares = concat $ map ((++ " ") . show) squares
+      showRow squares = intercalate " " $ map show squares
 
-
-# ♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
-# ♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
-# · · · · · · · ·
-# · · · · · · · ·
-# · · · · · · · ·
-# · · · · · · · ·
-# ♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙
-# ♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
+-- ♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
+-- ♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
+-- · · · · · · · ·
+-- · · · · · · · ·
+-- · · · · · · · ·
+-- · · · · · · · ·
+-- ♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙
+-- ♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
 newGameBoard :: Board
 newGameBoard = Board [
     blackPieces, blackPawns,
