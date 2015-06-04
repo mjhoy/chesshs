@@ -71,14 +71,7 @@ initialABoard = do
     empty = take 8 $ repeat Empty
     toBlack = Square Black
     toWhite = Square White
-    pieces = [ Rook
-             , Knight
-             , Bishop
-             , Queen
-             , King
-             , Bishop
-             , Knight
-             , Rook ]
+    pieces = [ Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook ]
     blackPieces = map toBlack pieces
     blackPawns  = map toBlack pawns
     whitePieces = map toWhite pieces
